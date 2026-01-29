@@ -1,4 +1,5 @@
 import "dotenv/config";
+process.loadEnvFile();
 
 export default {
   expo: {
@@ -13,21 +14,20 @@ export default {
       backgroundColor: "#ffffff",
     },
     jsEngine: "hermes",
-  },
-  entryPoint: "./App.js",
-  platforms: ["android", "ios", "web"],
-  updates: {
-    fallbackToCacheTimeout: 0,
-  },
-  assetBundlePatterns: ["**/*"],
-  ios: {
-    supportsTablet: true,
-  },
-  web: {
-    favicon: "./assets/favicon.png",
-  },
-  extra: {
-    env: process.env.ENV,
-    apolloUri: process.env.APOLLO_URI,
+    platforms: ["android", "ios", "web"],
+    updates: {
+      fallbackToCacheTimeout: 0,
+    },
+    assetBundlePatterns: ["**/*"],
+    ios: {
+      supportsTablet: true,
+    },
+    web: {
+      favicon: "./assets/favicon.png",
+    },
+    extra: {
+      env: process.env.ENV,
+      apolloUri: process.env.APOLLO_URI,
+    },
   },
 };
