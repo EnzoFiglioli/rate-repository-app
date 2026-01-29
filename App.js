@@ -1,21 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'web-streams-polyfill/polyfill';
+import { NativeRouter } from "react-router-native";
+import Main from "./src/Main";
+import { ApolloClient, HttpLink } from "@apollo/client";
+import { InMemoryCache } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
+import Constant from "expo-constants";
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: new HttpLink({
+    uri: Constant.expoConfig.extra.apolloUri,
+  }),
+});
 
 export default function App() {
+  console.log(Constant.expoConfig)
   return (
-    <View style={styles.container}>
-      <Text>Bienvenidos a mi App</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ApolloProvider client={client}>
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
+    </ApolloProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
