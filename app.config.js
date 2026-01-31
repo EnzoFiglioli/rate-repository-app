@@ -1,5 +1,4 @@
 import "dotenv/config";
-process.loadEnvFile();
 
 export default {
   expo: {
