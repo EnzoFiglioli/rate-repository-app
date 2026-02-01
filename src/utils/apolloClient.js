@@ -6,6 +6,7 @@ const createApolloClient = (authStorage) => {
   const httpLink = new HttpLink({
     uri: Constants.expoConfig.extra.apolloUri,
   });
+  console.log("Apollo URI:", Constants.expoConfig.extra.apolloUri);
 
   const authLink = setContext(async (_, { headers }) => {
     const accessToken = await authStorage.getAccessToken();

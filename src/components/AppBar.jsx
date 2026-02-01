@@ -10,12 +10,11 @@ export default function AppBar() {
     return null;
   }
   const user = data?.me || null;
-  console.log("AppBar user:", user);
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <Link to="/">
+        <Link to="/repositories">
           <Text style={styles.text}>Repositories</Text>
         </Link>
 
